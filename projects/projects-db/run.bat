@@ -1,0 +1,1 @@
+liquibase --driver=com.mysql.cj.jdbc.Driver --classpath=lib --changeLogFile=changelog.xml --url="jdbc:mysql://localhost/projects?serverTimezone=UTC" --username=projects_user --password=projects_user migrate
