@@ -16,11 +16,6 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
-    @GetMapping("/")
-    public String index(){
-        return "Greetings from Spring Boot!";
-    }
-
     @PostMapping("/list")
     public SearchResult<ProjectDto> getProjectsList() {
         return projectService.findAll();
