@@ -8,6 +8,7 @@ import net.ikazerskiy.projects.service.dao.ProjectRepository;
 import net.ikazerskiy.projects.service.dao.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -16,6 +17,7 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectRepository projectRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public SearchResult<ProjectDto> findAll() {
         SearchResult<ProjectDto> searchResult = new ProjectSearchResult();
         Iterable<Project> projects = projectRepository.findAll();
