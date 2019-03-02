@@ -6,18 +6,22 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet id="31.12.2018-01" author="ikazerskiy">
+        <comment>Add projects table</comment>
         <sql>
-            CREATE TABLE projects.projects (
+            CREATE TABLE projects (
             uid VARCHAR(36) NOT NULL,
             name VARCHAR(100) NOT NULL,
             create_date DATETIME NOT NULL,
             update_date DATETIME NOT NULL,
             description TINYTEXT NULL,
             PRIMARY KEY (uid),
-            UNIQUE INDEX udx_name (name ASC) INVISIBLE,
-            INDEX idx_name (name ASC) VISIBLE)
+            UNIQUE INDEX udx_name (name ASC),
+            INDEX idx_name (name ASC))
             COMMENT = 'Проекты';
         </sql>
+        <rollback>
+            DROP TABLE projects;
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>
